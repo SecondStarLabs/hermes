@@ -9,5 +9,8 @@
 </div>
 
 <% if @video_clip.videorecording.attached? %>
+<h2>
+  <%= link_to "link", url_for(@video_clip.videorecording) %>
+</h2>
   <%= image_tag @video_clip.videorecording, width: 280 %>
 <% end %>

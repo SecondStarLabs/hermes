@@ -21,9 +21,11 @@ $(document).on("turbolinks:load", () => {
 
 const Uppy = require("@uppy/core");
 const Dashboard = require("@uppy/dashboard");
+const Webcam = require("@uppy/webcam");
 const ActiveStorageUpload = require("@excid3/uppy-activestorage-upload");
 
 require("@uppy/core/dist/style.css");
+require("@uppy/webcam/dist/style.css");
 require("@uppy/dashboard/dist/style.css");
 
 document.addEventListener("turbolinks:load", () => {
@@ -56,6 +58,8 @@ function setupUppy(element) {
     trigger: trigger,
     closeAfterFinish: true
   });
+
+  uppy.use(Webcam, { target: Dashboard });
 
   uppy.on("complete", result => {
     // Rails.ajax
