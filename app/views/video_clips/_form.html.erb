@@ -1,0 +1,44 @@
+<%= form_with(model: video_clip, local: true) do |form| %>
+  <% if video_clip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(video_clip.errors.count, "error") %> prohibited this video_clip from being saved:</h2>
+
+      <ul>
+      <% video_clip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group" data-uppy="video_clip[videorecording]">
+    <%= form.label :videorecording %>
+    <div>
+      <% if @video_clip.videorecording.attached? %>
+        <%= image_tag @video_clip.videorecording, width: 280, data: { behavior: 'uppy-preview' } %>
+      <% else %>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSpj0DBTVsaja01_xWh37bcutvpd7rh7zEd528HD0d_l6A73osY" width="280" data-behavior="uppy-preview" />
+      <% end %>
+    </div>
+
+    <%= link_to "Upload", "#", data: { behavior: "uppy-trigger" } %>
+  </div>
+
+  <div class="form-group">
+    <% if video_clip.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', video_clip, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if video_clip.persisted? %>
+      <%= link_to "Cancel", video_clip, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", video_clips_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>
+
+

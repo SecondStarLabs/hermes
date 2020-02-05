@@ -29,3 +29,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore scaffold styleheet since the template provides initial css
+/app/assets/stylesheets/scaffolds.scss

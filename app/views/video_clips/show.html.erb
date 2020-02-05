@@ -1,0 +1,13 @@
+<div class="page-header">
+  <%= link_to video_clips_path, class: 'btn btn-default' do %>
+    All Video_clips
+  <% end %>
+  <%= link_to edit_video_clip_path(@video_clip), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+  <h1>Show video_clip</h1>
+</div>
+
+<% if @video_clip.videorecording.attached? %>
+  <%= image_tag @video_clip.videorecording, width: 280 %>
+<% end %>

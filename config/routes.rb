@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :video_clips
   namespace :admin do
     resources :users
     resources :announcements
