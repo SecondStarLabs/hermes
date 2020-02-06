@@ -5,10 +5,13 @@
   <%= link_to edit_video_clip_path(@video_clip), class: 'btn btn-primary' do %>
     Edit
   <% end %>
-  <h1>Show video_clip</h1>
 </div>
 
 <% if @video_clip.videorecording.attached? %>
+<%#= render '#{@video_clip.to_partial_path}' %>
+<%= render "/#{@video_clip.to_partial_path}" %>
+<hr>
+
 <h2>
   <%= link_to "link", url_for(@video_clip.videorecording) %>
 </h2>
